@@ -121,6 +121,13 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset
 @media(min-width:900px){.pilares--tres{grid-template-columns:repeat(3,1fr)}}
 .prof{border:1px solid var(--borde);border-left:3px solid var(--cielo);border-radius:0 16px 16px 0;background:rgba(86,184,232,.08);padding:24px 26px;color:var(--tinta-soft);font-size:.97rem}
 .prof strong{color:#fff}
+.bloque-pilar{margin-bottom:38px}
+.pilar-cabeza{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.pilar-n{font-family:'Archivo Black',Archivo,sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cielo);border:1px solid var(--borde);border-radius:999px;padding:7px 15px}
+.pilar-cabeza h3{font-size:clamp(1.2rem,2.6vw,1.65rem);color:#fff}
+.pilar-sub{color:var(--tinta-soft);font-size:.98rem;margin-bottom:20px;max-width:60ch}
+.bloque-pilar > p{color:var(--tinta-soft);font-size:.98rem;max-width:72ch}
+.bloque-pilar .pilares{margin-bottom:0}
 
 /* ============ TESTIMONIOS ============ */
 .citas{display:grid;grid-template-columns:1fr;gap:18px}
@@ -248,16 +255,30 @@ footer.pie a{color:var(--tinta-soft)}
     <div class="cabeza">
       <span class="eyebrow">El método</span>
       <h2>Tres pilares para <span class="cielo">recuperar el control</span></h2>
-      <p>La <strong>TDC</strong> (Terapia de Dolor Controlado) no la inventé en un cuaderno: la armé con un equipo de profesionales de distintos campos y la probé primero en mí, diez años adentro y cuatro afuera. El método se apoya en <strong>tres pilares</strong> que se trabajan juntos.</p>
+      <p>La <strong>TDC</strong> (Terapia de Dolor Controlado) no la inventé en un cuaderno: la armé con un equipo de profesionales de distintos campos y la probé primero en mí, diez años adentro y cuatro afuera. El método se apoya en <strong>tres pilares</strong>.</p>
     </div>
 
-    <div class="pilares pilares--tres">
-      <div class="pilar"><span class="idx">01</span><h3>TDC</h3>
-        <p><strong>Terapia de Dolor Controlado.</strong> Estímulos físicos de no más de tres minutos, diseñados para aprender a controlar todo tipo de impulso que nos lleva al consumo. Se aplican en el momento exacto, y con la repetición el control deja de depender de la fuerza de voluntad.</p></div>
-      <div class="pilar"><span class="idx">02</span><h3>PNL</h3>
-        <p><strong>Programación Neurolingüística.</strong> Herramientas para expresar y pensar la adicción de una manera que nos devuelva el control: el lenguaje con el que nos hablamos deja de justificar el consumo y empieza a sostener la decisión.</p></div>
-      <div class="pilar"><span class="idx">03</span><h3>CDI</h3>
-        <p>El pilar que sostiene todo en el tiempo: <strong>mantenernos limpios y mejorar los hábitos en todas las áreas de nuestra vida</strong>, no solo en lo que tiene que ver con el consumo.</p></div>
+    <div class="bloque-pilar">
+      <div class="pilar-cabeza"><span class="pilar-n">Pilar 1</span><h3>Impulsos, mente y hábitos</h3></div>
+      <p class="pilar-sub">Se trabaja con tres herramientas que se complementan entre sí.</p>
+      <div class="pilares pilares--tres">
+        <div class="pilar"><span class="idx">01</span><h3>TDC</h3>
+          <p><strong>Terapia de Dolor Controlado.</strong> Estímulos físicos de no más de tres minutos, diseñados para aprender a controlar todo tipo de impulso que nos lleva al consumo. Se aplican en el momento exacto, y con la repetición el control deja de depender de la fuerza de voluntad.</p></div>
+        <div class="pilar"><span class="idx">02</span><h3>PNL</h3>
+          <p><strong>Programación Neurolingüística.</strong> Herramientas para expresar y pensar la adicción de una manera que nos devuelva el control: el lenguaje con el que nos hablamos deja de justificar el consumo y empieza a sostener la decisión.</p></div>
+        <div class="pilar"><span class="idx">03</span><h3>CDI</h3>
+          <p>Herramientas para <strong>mantenernos limpios y mejorar los hábitos en todas las áreas de nuestra vida</strong>, no solo en lo que tiene que ver con el consumo.</p></div>
+      </div>
+    </div>
+
+    <div class="bloque-pilar">
+      <div class="pilar-cabeza"><span class="pilar-n">Pilar 2</span><h3>Suplementación natural</h3></div>
+      <p>Acompañamiento con suplementación natural para sostener el cuerpo a lo largo del proceso. No reemplaza ningún tratamiento ni indicación de un profesional de la salud.</p>
+    </div>
+
+    <div class="bloque-pilar">
+      <div class="pilar-cabeza"><span class="pilar-n">Pilar 3</span><h3>El seguimiento</h3></div>
+      <p>El proceso no se sostiene solo con el método: se sostiene acompañado. Seguimiento personalizado por WhatsApp, con la línea abierta <strong>24/7</strong> para los momentos clave — cuando aparecen las ganas, una recaída, una crisis.</p>
     </div>
 
     <div class="prof"><strong>Cómo se armó:</strong> junto a un equipo de profesionales de distintos campos, que ayudaron a darle forma a cada paso. Yo pongo la experiencia de diez años de consumo y cuatro de estar limpio; ellos, el respaldo técnico. No es magia ni promesa de cura: es una rutina concreta, explicada sin vueltas.</div>
@@ -324,18 +345,17 @@ footer.pie a{color:var(--tinta-soft)}
     <div class="cabeza">
       <span class="eyebrow">Gratis, para ahora mismo</span>
       <h2>Si las ganas están viniendo <span style="color:#1f7cae">ahora</span></h2>
-      <p>Esto es lo que yo hago, todavía hoy, cuando aparecen. No necesitás nada: ni plata, ni gimnasio, ni que nadie se entere. Solo tu cuerpo. Leelo y hacelo.</p>
+      <p>Esto es para el momento exacto en que aparece la necesidad. No necesitás nada: ni plata, ni gimnasio, ni que nadie se entere.</p>
     </div>
 
     <ul class="kit">
       <li><span class="n"></span><div><h3>Nombralo.</h3><p>«Esto son las ganas. Ya sé lo que es. Va a pasar.» Ponerle nombre ya te saca del piloto automático.</p></div></li>
-      <li><span class="n"></span><div><h3>Largá todo el aire y aguantá.</h3><p>Tres respiraciones profundas. En la última, exhalá TODO y quedate con los pulmones vacíos todo lo que puedas. Cuando el cuerpo te pida aire, respirá normal y repetí. Tres o cinco veces.</p></div></li>
-      <li><span class="n"></span><div><h3>Dale al cuerpo algo que le duela un poco.</h3><p>Flexiones con los puños cerrados hasta que ardan. Sentadillas hasta que quemen. Agua fría en la cara y los antebrazos.</p></div></li>
-      <li><span class="n"></span><div><h3>Decítelo mientras tanto.</h3><p>«Yo puedo. Yo tengo el control. Yo elijo lo sano.»</p></div></li>
+      <li><span class="n"></span><div><h3>Aplicá las herramientas del TDC.</h3><p>Los estímulos físicos de no más de tres minutos están diseñados exactamente para este momento: bajar el volumen del impulso y devolverte el control. Son concretos, y funcionan aunque no tengas ganas de hacer nada.</p></div></li>
+      <li><span class="n"></span><div><h3>Decítelo mientras tanto.</h3><p>«Yo puedo. Yo tengo el control. Yo elijo lo sano.» El lenguaje con el que te hablás es parte del método.</p></div></li>
       <li><span class="n"></span><div><h3>Repetí.</h3><p>¿Siguen? Otra ronda. Las ganas tienen menos aguante que vos: siempre se van primero.</p></div></li>
     </ul>
 
-    <div class="aviso"><strong>Ojo con esto:</strong> si tenés problemas de corazón, presión alta, estás embarazada o hace mucho que no hacés actividad física, quedate solo con la respiración sentado y el agua fría en los antebrazos, y hablá con un médico antes de exigirte más.</div>
+    <div class="aviso"><strong>Ojo con esto:</strong> lo que encontrás acá es parte de un método que comparto como mentor, desde mi experiencia. No es un tratamiento médico ni psicológico, y no reemplaza la consulta con un profesional de la salud.</div>
   </div>
 </section>
 
