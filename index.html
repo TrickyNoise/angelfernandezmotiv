@@ -10,173 +10,484 @@
 <meta property="og:image" content="https://www.angelfernandezmotiv.com/portada.jpg">
 <meta property="og:url" content="https://www.angelfernandezmotiv.com">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1c28">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%2356b8e8' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --fondo:#ffffff; --bruma:#eaf6fc; --borde:#d8e9f3;
-  --texto:#16303f; --gris:#5b7280;
-  --cielo:#56b8e8; --fuego:#1779b3; --fuego-hover:#1e8ecb;
-  --noche:#0f2433; --wsp:#25d366;
+  --noche:#0b1c28;
+  --noche-2:#102534;
+  --panel:#122a3a;
+  --borde:#1d3d52;
+  --tinta:#e3eef6;
+  --tinta-soft:#a9c4d4;
+  --tinta-mute:#7b98aa;
+  --cielo:#56b8e8;
+  --ember:#2b93cb;
+  --papel:#f7fbfd;
+  --papel-ink:#16303f;
+  --papel-soft:#4a6577;
+  --wsp:#25d366;
+  --wsp-ink:#072013;
+  --grano:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  --malla:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0 0H80M0 0V80' stroke='%2356b8e8' stroke-opacity='.16' stroke-width='1'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--fondo);color:var(--texto);font-family:Archivo,system-ui,sans-serif;line-height:1.6}
-.wrap{max-width:680px;margin:0 auto;padding:0 20px}
-h1,h2{font-family:'Archivo Black',Archivo,sans-serif;text-transform:uppercase;line-height:1.1;letter-spacing:.5px;text-wrap:balance}
-h1{font-size:clamp(1.9rem,5.2vw,3rem)}
-h2{font-size:clamp(1.4rem,6vw,2.2rem);margin-bottom:16px}
-p{margin-bottom:14px}
-.gris{color:var(--gris)}
-.fuego{color:var(--fuego)}
-section{padding:56px 0;border-top:1px solid var(--borde)}
-.btn{display:block;width:100%;text-align:center;padding:18px 24px;border-radius:14px;
-  font-weight:800;font-size:1.05rem;text-decoration:none;color:#fff;margin-top:18px}
-.btn-fuego{background:var(--fuego)} .btn-fuego:hover{background:var(--fuego-hover)}
-.btn-wsp{background:var(--wsp);color:#0f2433} .btn-wsp:hover{filter:brightness(1.08)}
-.btn-borde{background:none;border:2px solid var(--texto);color:var(--texto);font-weight:600}
-.btn:active{transform:scale(.98)}
-.btn:focus-visible,a:focus-visible{outline:3px solid var(--cielo);outline-offset:2px}
-.hero{background:linear-gradient(180deg,#f0f9fe 0%,var(--fondo) 75%);padding:56px 0 48px;border-bottom:1px solid var(--borde)}
-.hero .wrap{max-width:980px}
-.hero-grid{display:flex;flex-direction:column;gap:28px}
-.hero .sub{margin-top:18px;font-size:1.1rem;color:var(--gris);max-width:46ch}
-.eyebrow{font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fuego);margin-bottom:14px}
-.hero-foto{width:100%;max-height:420px;object-fit:cover;object-position:50% 22%;
-  border-radius:18px;display:block;border:1px solid var(--borde);
-  box-shadow:0 16px 40px -18px rgba(23,121,179,.45)}
-section.noche{background:var(--noche);color:#dcebf5;border-top:none}
-section.noche h2{color:#fff}
-section.noche .gris{color:#9db8c7}
-.banda{background:var(--bruma)}
-footer{padding:40px 0 60px;border-top:1px solid var(--borde);font-size:.85rem;color:var(--gris)}
-@media(min-width:700px){
-  .btn{display:inline-block;width:auto;min-width:280px;margin-right:12px}
-  .hero-grid{flex-direction:row;align-items:center;gap:44px}
-  .hero-texto{flex:1;min-width:0}
-  .hero-foto{width:320px;height:400px;max-height:none;flex:0 0 320px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+body{color:var(--tinta);font-family:Archivo,system-ui,sans-serif;line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;background:var(--noche)}
+
+/* ============ FONDO CON TEXTURA (fijo) ============ */
+.fondo{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(1200px 700px at 78% -10%, rgba(86,184,232,.20) 0%, transparent 62%),
+    radial-gradient(900px 620px at 6% 34%, rgba(43,147,203,.16) 0%, transparent 60%),
+    radial-gradient(1100px 800px at 60% 108%, rgba(86,184,232,.14) 0%, transparent 60%),
+    linear-gradient(180deg,#0c202e 0%,#0b1c28 48%,#08161f 100%);
 }
+.fondo::before{content:"";position:absolute;inset:0;background-image:var(--grano);background-size:200px 200px;opacity:.16;mix-blend-mode:overlay}
+.fondo::after{content:"";position:absolute;inset:0;background-image:var(--malla);background-size:80px 80px;opacity:.35}
+.pagina{position:relative;z-index:1}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.estrecho{max-width:760px}
+h1,h2,h3{font-family:'Archivo Black',Archivo,sans-serif;line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
+.eyebrow{font-weight:800;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cielo);display:inline-block;margin-bottom:20px}
+.eyebrow::before{content:"";display:inline-block;width:24px;height:2px;background:var(--cielo);vertical-align:middle;margin-right:12px}
+.cielo{color:var(--cielo)}
+.mute{color:var(--tinta-mute)}
+
+/* ============ BOTONES ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:1rem;text-decoration:none;padding:17px 28px;border-radius:14px;min-height:56px;line-height:1.2;cursor:pointer;transition:transform .12s ease,filter .15s ease,background .15s ease,color .15s ease}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:linear-gradient(180deg,#3aa3d8,#1f7cae);color:#fff;box-shadow:0 14px 34px -14px rgba(58,163,216,.75)}
+.btn-primary:hover{filter:brightness(1.07)}
+.btn-ghost{border:1.5px solid rgba(227,238,246,.35);color:var(--tinta);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-wsp{background:var(--wsp);color:var(--wsp-ink)}
+.btn-wsp:hover{filter:brightness(1.06)}
+.btn-sm{padding:11px 18px;min-height:44px;font-size:.86rem;border-radius:999px}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset:3px}
+
+/* ============ NAV ============ */
+.nav{position:sticky;top:0;z-index:60;background:rgba(11,28,40,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:12px}
+.brand{font-family:'Archivo Black',Archivo,sans-serif;font-size:.84rem;text-decoration:none;color:#fff;line-height:1}
+.brand small{display:block;font-weight:700;font-size:.57rem;letter-spacing:.34em;color:var(--tinta-mute);margin-top:4px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:8px}
+@media(max-width:760px){.nav-links .btn-ghost{display:none}}
+
+/* ============ HERO ============ */
+.hero{padding:74px 0 60px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,5.3vw,3.8rem);margin-bottom:22px;color:#fff}
+.hero .sub{font-size:1.12rem;color:var(--tinta-soft);max-width:50ch;margin-bottom:30px}
+.hero .sub strong{color:#fff}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hero-fig{margin:0;position:relative;max-width:400px}
+.hero-fig img{display:block;width:100%;height:auto;border-radius:20px;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;border:1px solid var(--borde)}
+.hero-fig::after{content:"";position:absolute;inset:0;border-radius:20px;background:linear-gradient(180deg,transparent 45%,rgba(11,28,40,.75) 100%)}
+.hero-fig figcaption{position:absolute;left:22px;right:22px;bottom:18px;z-index:2;font-size:.8rem;color:var(--tinta-soft)}
+.hero-fig figcaption b{display:block;font-family:'Archivo Black',Archivo,sans-serif;font-size:1rem;color:#fff;font-weight:400;margin-bottom:2px}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.08fr .92fr;gap:60px}.hero-fig{justify-self:end}}
+
+/* (franja de datos eliminada a pedido: no van números de Instagram) */
+
+/* ============ PANELES QUE FLOTAN SOBRE LA TEXTURA ============ */
+.panel{border-radius:24px;margin:24px auto;max-width:1192px;background:rgba(16,37,52,.72);border:1px solid var(--borde);backdrop-filter:blur(3px);box-shadow:0 40px 80px -50px #000}
+.panel--papel{background:var(--papel);border-color:#cfe4ef;color:var(--papel-ink)}
+.panel--papel h2,.panel--papel h3{color:var(--papel-ink)}
+.panel--papel p{color:var(--papel-soft)}
+.panel > .in{padding:62px 24px}
+@media(min-width:820px){.panel > .in{padding:88px 68px}}
+
+.cabeza{max-width:760px;margin-bottom:46px}
+.cabeza h2{font-size:clamp(1.85rem,4.6vw,3rem);margin-bottom:16px;color:#fff}
+.cabeza p{color:var(--tinta-soft);font-size:1.06rem}
+.panel--papel .cabeza h2{color:var(--papel-ink)}
+.panel--papel .cabeza p{color:var(--papel-soft)}
+.panel--papel .eyebrow{color:#1f7cae}
+.panel--papel .eyebrow::before{background:#1f7cae}
+
+/* ============ MÉTODO ============ */
+.pilares{display:grid;grid-template-columns:1fr;gap:20px;margin-bottom:40px}
+.pilar{background:rgba(9,24,34,.55);border:1px solid var(--borde);border-radius:18px;padding:28px}
+.pilar .idx{font-family:'Archivo Black',Archivo,sans-serif;font-size:1.05rem;color:var(--cielo);display:block;margin-bottom:14px}
+.pilar h3{font-size:1.18rem;color:#fff;margin-bottom:10px}
+.pilar p{color:var(--tinta-soft);font-size:.97rem}
+@media(min-width:760px){.pilares{grid-template-columns:1fr 1fr}}
+.prof{border:1px solid var(--borde);border-left:3px solid var(--cielo);border-radius:0 16px 16px 0;background:rgba(86,184,232,.08);padding:24px 26px;color:var(--tinta-soft);font-size:.97rem}
+.prof strong{color:#fff}
+
+/* ============ TESTIMONIOS ============ */
+.citas{display:grid;grid-template-columns:1fr;gap:18px}
+.cita{background:rgba(9,24,34,.62);border:1px solid var(--borde);border-radius:18px;padding:26px}
+.cita p{color:var(--tinta);font-size:1.02rem;margin-bottom:16px}
+.cita p::before{content:"«";color:var(--cielo)}
+.cita p::after{content:"»";color:var(--cielo)}
+.cita footer{font-size:.79rem;color:var(--tinta-mute);border-top:1px solid var(--borde);padding-top:14px}
+.cita footer b{color:var(--cielo);font-weight:700}
+.cita--top{grid-column:1/-1;background:linear-gradient(150deg,rgba(86,184,232,.16),rgba(9,24,34,.6));border-color:#2a5f7d}
+.cita--top p{font-family:'Archivo Black',Archivo,sans-serif;font-size:clamp(1.25rem,3vw,1.85rem);line-height:1.26;color:#fff}
+@media(min-width:820px){.citas{grid-template-columns:repeat(3,1fr)}}
+
+.tira{display:flex;gap:18px;overflow-x:auto;padding:34px 2px 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.tira figure{margin:0;flex:0 0 258px;scroll-snap-align:center}
+.tira .tel{background:#0a1a24;border:1px solid #2a5f7d;border-radius:26px;padding:12px 10px 10px;box-shadow:0 30px 60px -34px #000}
+.tira .tel::before{content:"";display:block;width:74px;height:5px;border-radius:99px;background:#2a5f7d;margin:0 auto 10px}
+.tira img{display:block;width:100%;border-radius:16px}
+.tira figcaption{font-size:.78rem;color:var(--tinta-mute);margin-top:12px;text-align:center}
+.pie-nota{font-size:.83rem;color:var(--tinta-mute)}
+
+/* ============ PROTOCOLO (panel claro = el kit de las 2 AM) ============ */
+.kit{list-style:none;counter-reset:k}
+.kit li{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:24px 0;border-top:1px solid #dcecf4}
+.kit li:last-child{border-bottom:1px solid #dcecf4}
+.kit .n{font-family:'Archivo Black',Archivo,sans-serif;color:#1f7cae;font-size:1.1rem;line-height:1;padding-top:3px}
+.kit .n::before{counter-increment:k;content:"0" counter(k)}
+.kit h3{font-size:1.14rem;margin-bottom:8px}
+.kit p{color:var(--papel-soft);font-size:.98rem}
+.aviso{margin-top:28px;background:#fff4e8;border:1px solid #f2d3ae;border-left:4px solid #e08c3c;border-radius:0 14px 14px 0;padding:20px 22px;color:#6b4a26;font-size:.94rem}
+.aviso strong{color:#4d3319}
+
+/* ============ HISTORIA ============ */
+.hist{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
+.hist .pull{font-family:'Archivo Black',Archivo,sans-serif;font-size:clamp(1.7rem,4.2vw,2.8rem);line-height:1.12;color:#fff}
+.hist .pull .cielo{display:block;margin-top:6px}
+.hist .cuerpo p{color:var(--tinta-soft);margin-bottom:16px;max-width:56ch}
+.hist .cuerpo p strong{color:#fff}
+.hist .legal{border-top:1px solid var(--borde);padding-top:20px;margin-top:26px;font-size:.9rem;color:var(--tinta-mute)}
+@media(min-width:900px){.hist{grid-template-columns:.92fr 1.08fr;gap:60px}}
+
+/* ============ FAMILIA / ACOMPAÑAR ============ */
+.caja-familia{background:rgba(9,24,34,.62);border:1px solid var(--borde);border-radius:20px;padding:36px}
+.caja-familia h2{font-size:clamp(1.6rem,3.6vw,2.3rem);color:#fff;margin-bottom:16px}
+.caja-familia p{color:var(--tinta-soft);margin-bottom:14px;max-width:58ch}
+.lista{list-style:none;display:grid;gap:0}
+.lista li{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:26px 0;border-top:1px solid var(--borde)}
+.lista li:last-child{border-bottom:1px solid var(--borde)}
+.lista .tag{font-family:'Archivo Black',Archivo,sans-serif;font-size:.74rem;letter-spacing:.14em;color:var(--cielo);white-space:nowrap;padding-top:5px}
+.lista h3{font-size:1.14rem;color:#fff;margin-bottom:8px}
+.lista p{color:var(--tinta-soft);font-size:.98rem}
+.sos{margin-top:28px;border:1px solid var(--borde);border-left:3px solid var(--wsp);border-radius:0 16px 16px 0;background:rgba(37,211,102,.10);padding:22px 24px;color:var(--tinta-soft);font-size:1rem}
+.sos strong{color:#fff}
+
+/* ============ COMUNIDAD ============ */
+.comunidad{background:linear-gradient(155deg,#0f3f28 0%,#123c28 40%,#0b1c28 100%);border-color:#1f6b4a}
+.green-sheet{background:linear-gradient(150deg,#14663f,#0f7a46 55%,#0d5c39);border:1px solid #1f8f56;border-radius:24px;padding:52px 30px;text-align:center;box-shadow:0 40px 90px -50px #0a5c34}
+.green-sheet h2{color:#fff;font-size:clamp(1.9rem,4.6vw,2.9rem);margin-bottom:18px}
+.green-sheet p{color:#d3f2e0;max-width:56ch;margin:0 auto 12px}
+.green-sheet .btn{margin-top:26px;min-width:320px}
+.sellos{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}
+.sello{border:1px solid rgba(255,255,255,.34);border-radius:999px;padding:8px 16px;font-size:.8rem;color:#eafff3}
+.avatares{display:flex;justify-content:center;margin-bottom:24px}
+.avatares span{width:46px;height:46px;border-radius:50%;margin-left:-14px;border:2px solid #0d5c39;background:linear-gradient(140deg,#3fbf7f,#25d366);display:inline-flex;align-items:center;justify-content:center;font-family:'Archivo Black',Archivo,sans-serif;color:#062a18;font-size:.82rem}
+.avatares span:first-child{margin-left:0}
+
+/* ============ AGENDA (calendario) ============ */
+.cal-marco{background:rgba(9,24,34,.55);border:1px solid var(--borde);border-radius:20px;padding:14px}
+#cal-inline{width:100%;min-height:660px;border-radius:14px;overflow:hidden;background:#0e2230}
+.cal-alt{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.cal-nota{font-size:.85rem;color:var(--tinta-mute);margin-top:16px}
+.cal-fallback{display:none;margin-top:16px;background:rgba(86,184,232,.09);border:1px solid var(--borde);border-radius:14px;padding:18px 20px;color:var(--tinta-soft);font-size:.96rem}
+.cal-fallback a{color:var(--cielo)}
+@media(max-width:660px){#cal-inline{min-height:580px}}
+
+/* ============ FOOTER ============ */
+footer.pie{background:#081620;border-top:1px solid var(--borde);padding:60px 0 92px;font-size:.9rem;color:var(--tinta-mute);position:relative;z-index:1}
+footer.pie .legal{max-width:760px;margin-bottom:24px}
+footer.pie .legal strong{color:var(--tinta)}
+footer.pie a{color:var(--tinta-soft)}
+.pie-bottom{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+@media(max-width:660px){.panel{border-radius:18px;margin:16px 12px}.green-sheet{padding:40px 20px}.green-sheet .btn{min-width:0;width:100%}}
 </style>
 </head>
 <body>
+<div class="fondo" aria-hidden="true"></div>
+<div class="pagina">
 
-<header class="hero">
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#topo">ÁNGEL FERNÁNDEZ.<small>Motiv</small></a>
+    <div class="nav-links">
+      <a class="btn btn-ghost btn-sm" href="#metodo">El método</a>
+      <a class="btn btn-ghost btn-sm" href="#agenda">Agendar</a>
+      <a class="btn btn-primary btn-sm" data-link="whatsappDirecto" href="#">Escribime</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="topo">
   <div class="wrap">
     <div class="hero-grid">
-      <div class="hero-texto">
-        <p class="eyebrow">Tu cuerpo puede más que las ganas</p>
-        <h1>Sé lo que es no poder parar.<br><span class="fuego">Y sé que se sale.</span></h1>
-        <p class="sub">Yo también estuve ahí: diez años consumiendo, con miedo, recayendo, perdiéndolo todo.
-        Hoy hace cuatro que estoy limpio, y me dedico a acompañar a gente que está donde vos estás.
-        No tenés que hacerlo solo.</p>
+      <div>
+        <span class="eyebrow">Tu cuerpo puede más que las ganas</span>
+        <h1>Sé lo que es no poder parar.<br><span class="cielo">Y sé que se sale.</span></h1>
+        <p class="sub">Yo también estuve ahí: <strong>diez años consumiendo</strong>, con miedo, recayendo, perdiéndolo todo. Hoy hace cuatro que estoy limpio, y me dedico a acompañar a gente que está donde vos estás. <strong>No tenés que hacerlo solo.</strong></p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" data-link="whatsappDirecto" href="#">Yo también pedí ayuda — Escribime</a>
+          <a class="btn btn-ghost" href="#metodo">Ver el método</a>
+        </div>
       </div>
-      <img class="hero-foto" src="portada.jpg" alt="Angel Fernandez" width="1600" height="2143">
+      <figure class="hero-fig">
+        <img src="portada.jpg" alt="Angel Fernandez" width="1600" height="2143">
+        <figcaption><b>Ángel Fernández</b>4 años limpio · mentor</figcaption>
+      </figure>
     </div>
-    <a class="btn btn-fuego" data-link="whatsappDirecto" href="#">Yo también pedí ayuda — Escribime</a>
-    <a class="btn btn-borde" href="#ganas">Qué hacer cuando vienen las ganas</a>
+
   </div>
 </header>
 
-<main>
-  <section id="ganas"><div class="wrap"><h2>Si las ganas están viniendo <span class="fuego">ahora</span></h2>
-<p>Esto es lo que yo hago, todavía hoy, cuando aparecen. No necesitás nada:
-ni plata, ni gimnasio, ni que nadie se entere. Solo tu cuerpo. Leelo y hacelo.</p>
-<ol style="margin:18px 0 18px 22px">
-  <li style="margin-bottom:12px"><strong>Nombralo.</strong> "Esto son las ganas. Ya sé lo que es. Va a pasar."
-  Ponerle nombre ya te saca del piloto automático.</li>
-  <li style="margin-bottom:12px"><strong>Largá todo el aire y aguantá.</strong> Tres respiraciones profundas.
-  En la última, exhalá TODO y quedate con los pulmones vacíos todo lo que puedas.
-  Cuando el cuerpo te pida aire, respirá normal y repetí. Tres o cinco veces.
-  Esa incomodidad, fuerte y segura, le baja el volumen a las ganas.</li>
-  <li style="margin-bottom:12px"><strong>Dale al cuerpo algo que le duela un poco.</strong> Flexiones con los puños
-  cerrados hasta que ardan. Sentadillas hasta que quemen. Agua fría en la cara y los antebrazos.
-  Un dolor chico, elegido por vos, le gana al dolor que te elige a vos.</li>
-  <li style="margin-bottom:12px"><strong>Decítelo mientras tanto.</strong> "Yo puedo. Yo tengo el control. Yo elijo lo sano."
-  Suena tonto hasta que lo hacés en el momento justo.</li>
-  <li style="margin-bottom:12px"><strong>Repetí.</strong> ¿Siguen? Otra ronda. Las ganas tienen menos aguante que vos:
-  siempre se van primero.</li>
-</ol>
-<p>Si son las 2 de la mañana, estás solo y todo está cerrado: es exactamente para eso.
-No hay caminata ni distracción que valga a esa hora. Es cuerpo. Y funciona.</p>
-<p class="gris">Si tenés problemas de corazón, presión alta, estás embarazada o hace mucho que no
-hacés actividad física, quedate solo con la respiración sentado y el agua fría en los antebrazos,
-y hablá con un médico antes de exigirte más.</p>
-<p style="margin-top:22px"><strong>¿Pasó? Bien. Ahora hablemos de mañana.</strong></p></div></section>
+<!-- ============ MÉTODO (primero) ============ -->
+<section class="panel" id="metodo">
+  <div class="in">
+    <div class="cabeza">
+      <span class="eyebrow">El método — TDC</span>
+      <h2>Tu cuerpo contra <span class="cielo">las ganas</span></h2>
+      <p>La <strong>TDC</strong> (Terapia de Dolor Controlado) no la inventé en un cuaderno: la armé con un equipo de profesionales de distintos campos y la probé primero en mí, diez años adentro y cuatro afuera. Cuatro herramientas, ninguna que no tengas ya en tu casa.</p>
+    </div>
 
-  <section id="historia" class="banda"><div class="wrap"><h2>Te entiendo. <span class="fuego">Yo también estuve ahí.</span></h2>
-<p>Consumí todo tipo de sustancias desde los 14 hasta los 24. Diez años.
-Me alejé de la gente que me quería ayudar y perdí todo.</p>
-<p>Un día tenía la plata para la comida de esa semana y me la gasté en droga.
-Ese día, encerrado en mi habitación, me di cuenta de que había tocado fondo.
-Tenía miedo. Ya había recaído mil veces. Pensé que no salía más.</p>
-<p>Salí. Y una vez afuera, me puse a estudiar cómo lo había logrado, para poder
-ayudar al resto. Hoy hace 4 años que estoy limpio y me dedico todos los días a eso:
-a acompañar a otros a salir del mismo pozo y a construir hábitos que los sostengan.</p>
-<p>No soy médico ni psicólogo, y no te voy a vender una cura. Soy alguien que ya
-recorrió este camino y que puede caminarlo a tu lado.</p></div></section>
+    <div class="pilares">
+      <div class="pilar"><span class="idx">01</span><h3>Respiración</h3>
+        <p>Tres respiraciones profundas. En la última, exhalás TODO y aguantás con los pulmones vacíos todo lo que puedas. Esa incomodidad le baja el volumen a las ganas.</p></div>
+      <div class="pilar"><span class="idx">02</span><h3>Dolor elegido</h3>
+        <p>Flexiones con los puños, sentadillas, plancha isométrica. Un dolor chico, elegido por vos, le gana al dolor que te elige a vos.</p></div>
+      <div class="pilar"><span class="idx">03</span><h3>Frío</h3>
+        <p>Un brazo, el otro, una pierna, la otra, la cara. Con la ducha fría de tu casa alcanza. Progresivo: lo que aguantes hoy.</p></div>
+      <div class="pilar"><span class="idx">04</span><h3>PNL</h3>
+        <p>«Yo puedo. Yo tengo el control. Yo elijo lo sano.» Frases cortas, repetidas en el momento exacto, con el cuerpo trabajando.</p></div>
+    </div>
 
-  <section id="familia"><div class="wrap"><h2>¿No sos vos, sino <span class="fuego">alguien que amás</span>?</h2>
-<p>Un hijo, una pareja, un hermano. Ver a alguien hundirse y no poder hacer nada
-es de las cosas más duras que existen: lo sé porque mi familia lo vivió conmigo.</p>
-<p>Te digo la verdad: es muy difícil ayudar a alguien que no quiere ayuda. Pero hay
-cosas que sí podés hacer, y cosas que hay que dejar de hacer. Escribime y lo vemos
-juntos, sin juzgar a nadie.</p>
-<a class="btn btn-borde" data-link="whatsappFamilia" href="#">Quiero ayudar a alguien — Escribime</a></div></section>
+    <div class="prof"><strong>Cómo se armó:</strong> junto a un equipo de profesionales de distintos campos, que ayudaron a darle forma a cada paso. Yo pongo la experiencia de diez años de consumo y cuatro de estar limpio; ellos, el respaldo técnico. No es magia ni promesa de cura: es una rutina concreta, explicada sin vueltas.</div>
+  </div>
+</section>
 
-  <section id="acompanar" class="banda"><div class="wrap"><h2>No tenés que <span class="fuego">hacerlo solo</span></h2>
-<p>Lo de arriba te sirve para pasar una noche. Salir del pozo es un camino de días,
-y lo que más lo cambia es no caminarlo solo. Así acompaño yo:</p>
-<ul style="list-style:none;margin:18px 0" role="list">
-  <li style="margin-bottom:14px">🤝 <strong>Mano a mano.</strong> Una charla por videollamada, vos y yo, donde me contás
-  en qué pozo estás y armamos tu primer paso. Y después 15 días conmigo por WhatsApp:
-  cuando vengan las ganas, me escribís.</li>
-  <li style="margin-bottom:14px">📋 <strong>El plan de 15 días.</strong> Todo el método en PDF, con fotos guía de cada
-  ejercicio, para hacerlo por tu cuenta desde tu casa.</li>
-  <li style="margin-bottom:14px">🎁 <strong>Becas.</strong> Cada semana regalo charlas a los casos más urgentes.
-  Si estás en una situación límite y no podés pagar nada, decímelo igual.</li>
-</ul>
-<p>Empezá por escribirme y contame cómo estás. Yo te leo, te digo con honestidad
-qué te conviene, y lo arrancamos.</p>
-<a class="btn btn-fuego" data-link="whatsappDirecto" href="#">Yo también pedí ayuda — Escribime</a></div></section>
+<!-- ============ TESTIMONIOS ============ -->
+<section class="panel" id="testimonios">
+  <div class="in">
+    <div class="cabeza">
+      <span class="eyebrow">Testimonios reales</span>
+      <h2>No lo digo yo. <span class="cielo">Lo dicen ellos.</span></h2>
+      <p>Mensajes que me llegan por WhatsApp, tal cual me los mandaron. No cambié una palabra: solo reservé nombres y números.</p>
+    </div>
 
-  <section id="comunidad"><div class="wrap"><h2>Y si hoy no te animás a escribir, <span class="fuego">entrá acá.</span></h2>
-<p>Tenemos una comunidad de WhatsApp gratuita donde cientos de personas
-están peleando la misma pelea que vos. Ahí comparto ejercicios todos los días.
-Solo escribo yo: nadie te va a preguntar nada ni te va a pedir nada.</p>
-<p class="gris">Gratis. Sin compromiso. Salís cuando quieras.</p>
-<a class="btn btn-wsp" data-link="whatsapp" href="#">Entrar a la comunidad de WhatsApp</a></div></section>
-</main>
+    <div class="citas">
+      <article class="cita cita--top">
+        <p>Una tranquilidad, andar por la calle con el pecho inflado, tranquilo, sin esconderme. Libre sería la palabra.</p>
+        <footer><b>Testimonio real</b> · nombre reservado · día 20 del plan</footer>
+      </article>
+      <article class="cita">
+        <p>Hola, muy bien. Estoy haciendo unos deberes del colegio. Lo loco: hace 3 días que no fumo.</p>
+        <footer><b>Testimonio real</b> · nombre reservado</footer>
+      </article>
+      <article class="cita">
+        <p>La verdad, levantarme temprano así y bien hacía rato no me pasaba.</p>
+        <footer><b>Testimonio real</b> · nombre reservado</footer>
+      </article>
+      <article class="cita">
+        <p>El fin de semana fue genial en familia, comiendo de asadito tranqui. Nada de alcohol, nada de nada, y haciendo los ejercicios siempre.</p>
+        <footer><b>Testimonio real</b> · nombre reservado</footer>
+      </article>
+      <article class="cita">
+        <p>El cuerpo solo me pedía la rutina: salir a caminar esos 4 km y correr solo. Con una tranquilidad y una felicidad enormes.</p>
+        <footer><b>Testimonio real</b> · nombre reservado</footer>
+      </article>
+      <article class="cita">
+        <p>Yo hoy no me levanté fastidiado, anoche me acosté con presión y ahora estoy pensando arrancar el gimnasio.</p>
+        <footer><b>Testimonio real</b> · nombre reservado</footer>
+      </article>
+      <article class="cita">
+        <p>No, impecable. El fin de semana lo pasé tranquilo, mirando una serie. No me han mandado ninguna y tampoco se me cruzó mucho por la cabeza.</p>
+        <footer><b>Testimonio real</b> · nombre reservado</footer>
+      </article>
+    </div>
 
-<footer><div class="wrap"><p><strong>Importante:</strong> Angel Fernandez comparte su experiencia personal y su método
-como mentor. No es médico, psicólogo ni profesional de la salud, y nada de lo que
-encuentres acá reemplaza un tratamiento médico o terapéutico.</p>
-<p style="margin-top:14px">© 2026 Angel Fernandez Motiv ·
-<a data-link="instagram" href="#" style="color:var(--gris);display:inline-block;padding:12px 0">@angelfernandezmotiv</a></p></div></footer>
+    <div class="tira" role="region" aria-label="Capturas de conversaciones reales">
+      <figure><div class="tel"><img src="img/chat-libre.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Libre sería la palabra»</figcaption></figure>
+      <figure><div class="tel"><img src="img/chat-casa.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«El cuerpo solo me pedía la rutina»</figcaption></figure>
+      <figure><div class="tel"><img src="img/chat-temprano.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Levantarme temprano así ya no me pasaba»</figcaption></figure>
+      <figure><div class="tel"><img src="img/chat-nofumo.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Hace 3 días que no fumo»</figcaption></figure>
+      <figure><div class="tel"><img src="img/chat-10km.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Caminé y corrí casi 10 km»</figcaption></figure>
+      <figure><div class="tel"><img src="img/chat-asado.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Nada de alcohol y los ejercicios siempre»</figcaption></figure>
+      <figure><div class="tel"><img src="img/chat-gym.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Todo cambia para bien»</figcaption></figure>
+      <figure><div class="tel"><img src="img/chat-dia2.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«2 días limpio, contento»</figcaption></figure>
+    </div>
+    <p class="pie-nota">Capturas sacadas de mi propio WhatsApp, sin editar. Nombres y números reservados.</p>
+  </div>
+</section>
+
+<!-- ============ PROTOCOLO ============ -->
+<section class="panel panel--papel" id="ganas">
+  <div class="in">
+    <div class="cabeza">
+      <span class="eyebrow">Gratis, para ahora mismo</span>
+      <h2>Si las ganas están viniendo <span style="color:#1f7cae">ahora</span></h2>
+      <p>Esto es lo que yo hago, todavía hoy, cuando aparecen. No necesitás nada: ni plata, ni gimnasio, ni que nadie se entere. Solo tu cuerpo. Leelo y hacelo.</p>
+    </div>
+
+    <ul class="kit">
+      <li><span class="n"></span><div><h3>Nombralo.</h3><p>«Esto son las ganas. Ya sé lo que es. Va a pasar.» Ponerle nombre ya te saca del piloto automático.</p></div></li>
+      <li><span class="n"></span><div><h3>Largá todo el aire y aguantá.</h3><p>Tres respiraciones profundas. En la última, exhalá TODO y quedate con los pulmones vacíos todo lo que puedas. Cuando el cuerpo te pida aire, respirá normal y repetí. Tres o cinco veces.</p></div></li>
+      <li><span class="n"></span><div><h3>Dale al cuerpo algo que le duela un poco.</h3><p>Flexiones con los puños cerrados hasta que ardan. Sentadillas hasta que quemen. Agua fría en la cara y los antebrazos.</p></div></li>
+      <li><span class="n"></span><div><h3>Decítelo mientras tanto.</h3><p>«Yo puedo. Yo tengo el control. Yo elijo lo sano.»</p></div></li>
+      <li><span class="n"></span><div><h3>Repetí.</h3><p>¿Siguen? Otra ronda. Las ganas tienen menos aguante que vos: siempre se van primero.</p></div></li>
+    </ul>
+
+    <div class="aviso"><strong>Ojo con esto:</strong> si tenés problemas de corazón, presión alta, estás embarazada o hace mucho que no hacés actividad física, quedate solo con la respiración sentado y el agua fría en los antebrazos, y hablá con un médico antes de exigirte más.</div>
+  </div>
+</section>
+
+<!-- ============ HISTORIA ============ -->
+<section class="panel" id="historia">
+  <div class="in">
+    <div class="hist">
+      <div class="pull">«Me paré frente al espejo y no me reconocí.»<span class="cielo">Ese día algo dijo basta.</span></div>
+      <div class="cuerpo">
+        <span class="eyebrow">Mi historia</span>
+        <p>Consumí todo tipo de sustancias desde los 14 hasta los 24. <strong>Diez años.</strong> Me alejé de la gente que me quería ayudar y perdí todo.</p>
+        <p>Un día me paré frente al espejo y me di cuenta de que mi vida había perdido sentido: <strong>no quería ser más la persona que estaba siendo</strong>. Encerrado en mi habitación entendí que había tocado fondo. Tenía miedo. Ya había recaído mil veces. Pensé que no salía más.</p>
+        <p>Salí. Y una vez afuera me puse a estudiar cómo lo había logrado, para poder ayudar al resto. Hoy hace 4 años que estoy limpio y me dedico todos los días a eso: a acompañar a otros a salir del mismo pozo y a construir hábitos que los sostengan.</p>
+        <p>Recuperé la vitalidad, el sueño, la paciencia, las ganas de entrenar y de sentarme a comer con mi familia. Todo eso que la sustancia me había robado.</p>
+        <p class="legal">No soy médico ni psicólogo, y no te voy a vender una cura. Soy alguien que ya recorrió este camino y que puede caminarlo a tu lado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAMILIA ============ -->
+<section class="panel" id="familia">
+  <div class="in">
+    <div class="caja-familia">
+      <span class="eyebrow">Para el que acompaña</span>
+      <h2>¿No sos vos, sino <span class="cielo">alguien que amás</span>?</h2>
+      <p>Un hijo, una pareja, un hermano. Ver a alguien hundirse y no poder hacer nada es de las cosas más duras que existen: lo sé porque mi familia lo vivió conmigo.</p>
+      <p>Te digo la verdad: es muy difícil ayudar a alguien que no quiere ayuda. Pero hay cosas que sí podés hacer, y cosas que hay que dejar de hacer. Escribime y lo vemos juntos, sin juzgar a nadie.</p>
+      <a class="btn btn-ghost" data-link="whatsappFamilia" href="#">Quiero ayudar a alguien — Escribime</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACOMPAÑAR ============ -->
+<section class="panel" id="acompanar">
+  <div class="in">
+    <div class="cabeza">
+      <span class="eyebrow">Cómo te acompaño</span>
+      <h2>No tenés que <span class="cielo">hacerlo solo</span></h2>
+      <p>Lo de arriba te sirve para pasar una noche. Salir del pozo es un camino de días, y lo que más lo cambia es no caminarlo solo.</p>
+    </div>
+    <ul class="lista">
+      <li><span class="tag">MANO A MANO</span><div><h3>Acompañamiento personalizado por WhatsApp</h3><p>Te acompaño uno a uno, por WhatsApp, con tu caso y tu ritmo. No es un manual: me contás cómo estás hoy y armamos juntos el paso siguiente.</p></div></li>
+      <li><span class="tag">EL PLAN</span><div><h3>15 días por tu cuenta</h3><p>Todo el método en PDF, con <strong>fotos guía de cada ejercicio</strong>, para hacerlo desde tu casa.</p></div></li>
+      <li><span class="tag">BECAS</span><div><h3>Si no podés pagar nada</h3><p>Cada semana regalo charlas a los casos más urgentes. Si estás en una situación límite, <strong>decímelo igual</strong>.</p></div></li>
+    </ul>
+    <div class="sos"><strong>Mi línea está abierta 24/7.</strong> Si estás en un momento clave —una noche difícil, una recaída, una crisis— me escribís y del otro lado estoy yo. No estás solo en eso.</div>
+    <p style="margin-top:30px;color:var(--tinta-soft)">Empezá por escribirme y contame cómo estás. Yo te leo, te digo con honestidad qué te conviene, y lo arrancamos.</p>
+    <div class="cal-alt">
+      <a class="btn btn-primary" href="#agenda">Agendar mi charla</a>
+      <a class="btn btn-wsp" data-link="whatsappDirecto" href="#">Escribime por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AGENDAR (calendario) ============ -->
+<section class="panel" id="agenda">
+  <div class="in">
+    <div class="cabeza">
+      <span class="eyebrow">Agendá tu sesión</span>
+      <h2>Sesión 1A1 <span class="cielo">gratuita con Ángel Fernández</span></h2>
+      <p>Elegí el día y la hora que te queden bien y reservá en el momento. Los horarios se muestran en la hora de tu país.</p>
+    </div>
+    <div class="cal-marco">
+      <div id="cal-inline"></div>
+      <noscript><p class="cal-nota">Para ver los horarios activá JavaScript, o <a href="https://cal.com/ciro-savage-oc1pta/charla-con-el-profe" target="_blank" rel="noopener">entrá acá</a>.</p></noscript>
+      <div class="cal-fallback" id="cal-fallback">No se pudo cargar el calendario. <a href="https://cal.com/ciro-savage-oc1pta/charla-con-el-profe" target="_blank" rel="noopener">Mirá los horarios acá</a> o <a data-link="whatsappDirecto" href="#">escribime por WhatsApp</a> y lo coordinamos.</div>
+    </div>
+    <div class="cal-alt">
+      <a class="btn btn-wsp" data-link="whatsappDirecto" href="#">Preferís WhatsApp — Escribime</a>
+      <a class="btn btn-ghost" data-link="whatsapp" href="#">Sumarme a la comunidad gratis</a>
+    </div>
+    <p class="cal-nota">Si ningún horario te queda cómodo, escribime por WhatsApp y buscamos otro.</p>
+  </div>
+</section>
+
+<!-- ============ COMUNIDAD ============ -->
+<section class="panel comunidad" id="comunidad">
+  <div class="in" style="padding-top:36px">
+    <div class="green-sheet">
+      <div class="avatares" aria-hidden="true"><span>A</span><span>M</span><span>J</span><span>R</span><span>+</span></div>
+      <h2>Entrá a la comunidad.<br>Hoy mismo.</h2>
+      <p>Un grupo de WhatsApp gratuito donde hay más de 300 personas, de distintos países, peleando la misma pelea que vos. Ahí comparto los ejercicios todos los días.</p>
+      <p>Casi todos entran sin escribir una palabra. Está bien: leé lo que necesites, y cuando quieras contar algo, contalo.</p>
+      <a class="btn btn-wsp" data-link="whatsapp" href="#">Unirme a la comunidad de WhatsApp</a>
+      <div class="sellos">
+        <span class="sello">Gratis</span>
+        <span class="sello">Sin compromiso</span>
+        <span class="sello">Salís cuando quieras</span>
+        <span class="sello">No te pide pagar nada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="pie">
+  <div class="wrap">
+    <p class="legal"><strong>Importante:</strong> Angel Fernandez comparte su experiencia personal y su método como mentor. No es médico, psicólogo ni profesional de la salud, y nada de lo que encuentres acá reemplaza un tratamiento médico o terapéutico.</p>
+    <div class="pie-bottom">
+      <span>© 2026 Angel Fernandez Motiv</span>
+      <a data-link="instagram" href="#">@angelfernandezmotiv</a>
+    </div>
+  </div>
+</footer>
 
 <script>
 const CONFIG = {
-  checkout1v1:  "https://pay.hotmart.com/U107503512Q?off=7gfl8vt5",  // Charla 1v1 (ID 8471849) — oferta 33 EUR (la base de 35 USD quedó inactiva de facto)
-  checkoutPlan: "https://pay.hotmart.com/O100003561J?off=5hohbadt",  // Plan TDC en PDF (ID 8479995) — 12 EUR
-  whatsapp:    "https://chat.whatsapp.com/E2W33GQW5l92sgVX2GK2Dk",  // invitación a la comunidad
-  whatsappDirecto: "https://wa.me/5491130147733?text=Hola%20Angel%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20pedir%20ayuda",  // chat directo con Ciro (+54 9 11 3014 7733)
-  whatsappFamilia: "https://wa.me/5491130147733?text=Hola%20Angel%2C%20vi%20tu%20p%C3%A1gina.%20No%20es%20para%20m%C3%AD%2C%20es%20para%20alguien%20que%20quiero%20ayudar.",  // mismo numero, mensaje de familiar
+  whatsapp:    "https://chat.whatsapp.com/E2W33GQW5l92sgVX2GK2Dk",
+  whatsappDirecto: "https://wa.me/5491130147733?text=Hola%20Angel%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20pedir%20ayuda",
+  whatsappFamilia: "https://wa.me/5491130147733?text=Hola%20Angel%2C%20vi%20tu%20p%C3%A1gina.%20No%20es%20para%20m%C3%AD%2C%20es%20para%20alguien%20que%20quiero%20ayudar.",
   instagram:   "https://www.instagram.com/angelfernandezmotiv"
 };
 document.querySelectorAll("[data-link]").forEach(a => {
-  const valor = CONFIG[a.dataset.link];
-  if (valor === undefined) {
-    console.warn("data-link sin entrada en CONFIG:", a.dataset.link);
-    a.href = "#";
-  } else if (valor.startsWith("#PENDIENTE")) {
-    console.warn("Link pendiente de configurar:", a.dataset.link);
-    a.href = "#";
-  } else {
-    a.href = valor;
-  }
+  const v = CONFIG[a.dataset.link];
+  if (v === undefined) { console.warn("data-link sin CONFIG:", a.dataset.link); a.href = "#"; }
+  else { a.href = v; }
 });
+
+/* ---- Calendario de Cal.com (agenda) ---- */
+(function () {
+  var fb = document.getElementById("cal-fallback");
+  function mostrarFallback() { if (fb) fb.style.display = "block"; }
+  try {
+    (function (C, A, L) {
+      var p = function (a, ar) { a.q.push(ar); };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal;
+        var ar = arguments;
+        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+        if (ar[0] === L) {
+          var api = function () { p(api, arguments); };
+          var ns = ar[1];
+          api.q = api.q || [];
+          if (typeof ns === "string") { cal.ns[ns] = cal.ns[ns] || api; p(cal.ns[ns], ar); p(cal, ["initNamespace", ns]); } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "charla", { origin: "https://cal.com" });
+    Cal.ns["charla"]("inline", { elementOrSelector: "#cal-inline", config: { layout: "month_view", theme: "dark" }, calLink: "ciro-savage-oc1pta/charla-con-el-profe" });
+    Cal.ns["charla"]("ui", { theme: "dark", layout: "month_view", hideEventTypeDetails: true, showTimezoneWhenEventDetailsHidden: true });
+    window.addEventListener("load", function () { setTimeout(function () {
+      var el = document.getElementById("cal-inline");
+      if (!el || !el.querySelector("iframe")) mostrarFallback();
+    }, 7000); });
+  } catch (e) { mostrarFallback(); }
+})();
 </script>
 </body>
 </html>
