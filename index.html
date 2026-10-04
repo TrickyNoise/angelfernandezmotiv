@@ -552,10 +552,10 @@ document.querySelectorAll("[data-link]").forEach(a => {
 
   var BASE = "https://cal.com/angelfernandezmotiv/1a1";
   var DUR = 40;                      // minutos de la sesión
-  var INICIO = 3 * 60;               // 03:00, hora de Argentina
-  var FIN = 17 * 60 + 40;            // 17:40
+  var INICIO = 8 * 60;               // 08:00, hora de España
+  var FIN = 20 * 60 + 40;            // 20:40 (la última que arranca antes de las 21:00)
   var DIAS = 21;                     // cuántos días se ofrecen
-  var TZ = "America/Argentina/Buenos_Aires";
+  var TZ = "Europe/Madrid";          // la franja se define en hora de España
 
   var DIAS_SEM = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
   var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
@@ -563,15 +563,37 @@ document.querySelectorAll("[data-link]").forEach(a => {
   function ymd(d) {
     return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
   }
-  // Convierte una hora de Argentina (HH:MM) a un Date real, para mostrarla en la zona del visitante
+  // Hora de España (Europe/Madrid) de un instante dado, con summer time incluido
+  var fmtES = new Intl.DateTimeFormat("en-GB", {
+    timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false
+  });
+  function partesES(date) {
+    var o = {};
+    fmtES.formatToParts(date).forEach(function (p) {
+      if (p.type !== "literal") o[p.type] = +p.value;
+    });
+    if (o.hour === 24) o.hour = 0;
+    return o;
+  }
+  // Convierte "día + HH:MM de España" al instante real que corresponde.
+  // Se itera dos veces para resolver el desfase horario de verano sin hardcodear offsets.
   function fechaReal(y, m, d, hh, mm) {
-    var iso = y + "-" + String(m).padStart(2,"0") + "-" + String(d).padStart(2,"0") + "T" + String(hh).padStart(2,"0") + ":" + String(mm).padStart(2,"0") + ":00-03:00";
-    return new Date(iso);
+    var objetivo = Date.UTC(y, m - 1, d, hh, mm);
+    var ts = objetivo;
+    for (var i = 0; i < 2; i++) {
+      var p = partesES(new Date(ts));
+      var enEspana = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute);
+      ts += objetivo - enEspana;
+    }
+    return new Date(ts);
   }
   function dosDig(n) { return String(n).padStart(2, "0"); }
 
   // ---- Días ----
-  var hoy = new Date(); hoy.setHours(0,0,0,0);
+  // "Hoy" según la fecha de España, no según la del visitante
+  var pHoy = partesES(new Date());
+  var hoy = new Date(pHoy.year, pHoy.month - 1, pHoy.day);
   var opciones = [];
   for (var i = 0; i < DIAS; i++) {
     var f = new Date(hoy); f.setDate(hoy.getDate() + i);
