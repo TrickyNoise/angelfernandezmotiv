@@ -7,9 +7,7 @@
 <meta name="description" content="Sé lo que es no poder parar, y sé que se sale. Qué hacer cuando vienen las ganas, gratis, y alguien que ya recorrió el camino para acompañarte. No tenés que hacerlo solo.">
 <meta property="og:title" content="Angel Fernandez Motiv">
 <meta property="og:description" content="Sé lo que es no poder parar. Y sé que se sale. No tenés que hacerlo solo.">
-<meta property="og:image" content="https://www.angelfernandezmotiv.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="https://www.angelfernandezmotiv.com/portada.jpg">
 <meta property="og:url" content="https://www.angelfernandezmotiv.com">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0b1c28">
@@ -85,7 +83,7 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset
 @media(max-width:760px){.nav-links .btn-ghost{display:none}}
 .lbl-corto{display:none}
 @media(max-width:680px){
-  .nav-inner{height:auto;min-height:64px;padding:11px 0;gap:8px}
+  .nav-inner{height:auto;min-height:64px;padding-top:11px;padding-bottom:11px;gap:8px}
   .brand{font-size:.7rem}
   .brand small{font-size:.5rem;letter-spacing:.22em;margin-top:3px}
   .nav-links{gap:6px}
@@ -157,12 +155,20 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset
 .cita--top p{font-family:'Archivo Black',Archivo,sans-serif;font-size:clamp(1.25rem,3vw,1.85rem);line-height:1.26;color:#fff}
 @media(min-width:820px){.citas{grid-template-columns:repeat(3,1fr)}}
 
-.tira{display:flex;gap:18px;overflow-x:auto;padding:34px 2px 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-.tira figure{margin:0;flex:0 0 258px;scroll-snap-align:center}
-.tira .tel{background:#0a1a24;border:1px solid #2a5f7d;border-radius:26px;padding:12px 10px 10px;box-shadow:0 30px 60px -34px #000}
-.tira .tel::before{content:"";display:block;width:74px;height:5px;border-radius:99px;background:#2a5f7d;margin:0 auto 10px}
-.tira img{display:block;width:100%;border-radius:16px}
-.tira figcaption{font-size:.78rem;color:var(--tinta-mute);margin-top:12px;text-align:center}
+/* Las capturas son verticales (520x1000). Se respeta su proporción real:
+   nunca se estiran ni se deforman. Tira deslizable horizontal en TODOS los tamaños,
+   con enganche (snap) para que cada captura quede centrada al soltarla. */
+.tira{display:flex;gap:16px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#2a5f7d transparent}
+.tira figure{margin:0;flex:0 0 auto;width:min(72vw,250px);scroll-snap-align:center;display:flex;flex-direction:column;align-items:center}
+.tira .tel{position:relative;width:100%;background:#0a1a24;border:1px solid #2a5f7d;border-radius:20px;padding:9px 8px 8px;box-shadow:0 24px 48px -30px #000}
+.tira .tel::before{content:"";display:block;width:46px;height:4px;border-radius:99px;background:#2a5f7d;margin:0 auto 8px}
+.tira img{display:block;width:100%;height:auto;aspect-ratio:520/1000;object-fit:contain;border-radius:11px;background:#0a1a24}
+.tira figure:first-child .tel img{aspect-ratio:591/890}
+.tira figcaption{font-size:.76rem;line-height:1.4;color:var(--tinta-mute);margin-top:11px;text-align:center;max-width:24ch}
+/* pista visual de que se desliza */
+.tira-wrap{position:relative}
+.tira-wrap::after{content:"⇠  deslizá para ver más  ⇢";position:absolute;right:2px;bottom:-4px;font-size:.72rem;color:var(--tinta-mute);opacity:.85;pointer-events:none}
+@media(min-width:900px){.tira figure{width:230px}}
 .pie-nota{font-size:.83rem;color:var(--tinta-mute)}
 
 /* ============ PROTOCOLO (panel claro = el kit de las 2 AM) ============ */
@@ -346,6 +352,7 @@ footer.pie a{color:var(--tinta-soft)}
       </article>
     </div>
 
+    <div class="tira-wrap">
     <div class="tira" role="region" aria-label="Capturas de conversaciones reales">
       <figure><div class="tel"><img width="591" height="890" src="img/chat-gracias.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Hace 15 días entré en tu plan y me encanta»</figcaption></figure>
       <figure><div class="tel"><img width="520" height="1000" src="img/chat-libre.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Libre sería la palabra»</figcaption></figure>
@@ -355,6 +362,7 @@ footer.pie a{color:var(--tinta-soft)}
       <figure><div class="tel"><img width="520" height="1000" src="img/chat-asado.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Nada de alcohol y los ejercicios siempre»</figcaption></figure>
       <figure><div class="tel"><img width="520" height="1000" src="img/chat-gym.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«Todo cambia para bien»</figcaption></figure>
       <figure><div class="tel"><img width="520" height="1000" src="img/chat-dia2.jpg" alt="Captura de conversación real" loading="lazy"></div><figcaption>«2 días limpio, contento»</figcaption></figure>
+    </div>
     </div>
     <p class="pie-nota">Capturas sacadas de mi propio WhatsApp, sin editar. Nombres y números reservados.</p>
   </div>
