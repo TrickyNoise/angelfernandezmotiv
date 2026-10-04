@@ -35,6 +35,7 @@
   --malla:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0 0H80M0 0V80' stroke='%2356b8e8' stroke-opacity='.16' stroke-width='1'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;margin:0;padding:0}
+p,h1,h2,h3,h4{overflow-wrap:break-word}
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
 body{color:var(--tinta);font-family:Archivo,system-ui,sans-serif;line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;background:var(--noche)}
@@ -79,6 +80,17 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset
 .nav-links{display:flex;align-items:center;gap:8px}
 .nav-links .btn{white-space:nowrap}
 @media(max-width:760px){.nav-links .btn-ghost{display:none}}
+.lbl-corto{display:none}
+@media(max-width:680px){
+  .nav-inner{height:auto;min-height:64px;padding:11px 0;gap:8px}
+  .brand{font-size:.7rem}
+  .brand small{font-size:.5rem;letter-spacing:.22em;margin-top:3px}
+  .nav-links{gap:6px}
+  .nav-links .btn{padding:10px 13px;font-size:.78rem;min-height:42px;border-radius:999px}
+  .lbl-largo{display:none}
+  .lbl-corto{display:inline}
+}
+@media(max-width:360px){.nav-links .btn{padding:9px 10px;font-size:.72rem}}
 
 /* ============ HERO ============ */
 .hero{padding:74px 0 60px}
@@ -180,6 +192,10 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset
 .lista .tag{font-family:'Archivo Black',Archivo,sans-serif;font-size:.74rem;letter-spacing:.14em;color:var(--cielo);white-space:nowrap;padding-top:5px}
 .lista h3{font-size:1.14rem;color:#fff;margin-bottom:8px}
 .lista p{color:var(--tinta-soft);font-size:.98rem}
+@media(max-width:680px){
+  .lista li{grid-template-columns:1fr;gap:10px}
+  .lista .tag{white-space:normal;padding-top:0}
+}
 .sos{margin-top:28px;border:1px solid var(--borde);border-left:3px solid var(--wsp);border-radius:0 16px 16px 0;background:rgba(37,211,102,.10);padding:22px 24px;color:var(--tinta-soft);font-size:1rem}
 .sos strong{color:#fff}
 
@@ -223,7 +239,7 @@ footer.pie a{color:var(--tinta-soft)}
     <div class="nav-links">
       <a class="btn btn-ghost btn-sm" href="#metodo">El método</a>
       <a class="btn btn-ghost btn-sm" href="#agenda">Agendar</a>
-      <a class="btn btn-wsp btn-sm" data-link="whatsapp" href="#">Comunidad gratuita</a>
+      <a class="btn btn-wsp btn-sm" data-link="whatsapp" href="#"><span class="lbl-largo">Comunidad gratuita</span><span class="lbl-corto">Comunidad</span></a>
       <a class="btn btn-primary btn-sm" data-link="whatsappDirecto" href="#">Escribime</a>
     </div>
   </div>
