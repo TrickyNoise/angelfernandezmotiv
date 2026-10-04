@@ -220,14 +220,9 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset
 .avatares span{width:46px;height:46px;border-radius:50%;margin-left:-14px;border:2px solid #0d5c39;background:linear-gradient(140deg,#3fbf7f,#25d366);display:inline-flex;align-items:center;justify-content:center;font-family:'Archivo Black',Archivo,sans-serif;color:#062a18;font-size:.82rem}
 .avatares span:first-child{margin-left:0}
 
-/* ============ AGENDA (calendario) ============ */
-.cal-marco{background:rgba(9,24,34,.55);border:1px solid var(--borde);border-radius:20px;padding:14px}
-#cal-inline{width:100%;min-height:660px;border-radius:14px;overflow:hidden;background:#0e2230}
+/* ============ AGENDA (horarios) ============ */
 .cal-alt{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
 .cal-nota{font-size:.85rem;color:var(--tinta-mute);margin-top:16px}
-.cal-fallback{display:none;margin-top:16px;background:rgba(86,184,232,.09);border:1px solid var(--borde);border-radius:14px;padding:18px 20px;color:var(--tinta-soft);font-size:.96rem}
-.cal-fallback a{color:var(--cielo)}
-@media(max-width:660px){#cal-inline{min-height:580px}}
 
 /* ============ DESPLEGABLE DE HORARIOS ============ */
 .horas{margin-top:4px}
@@ -485,11 +480,6 @@ footer.pie a{color:var(--tinta-soft)}
       <p class="horas-aviso" id="h-aviso">Elegí un día para ver los horarios disponibles.</p>
     </div>
 
-    <div class="cal-marco">
-      <div id="cal-inline"></div>
-      <noscript><p class="cal-nota">Para ver los horarios activá JavaScript, o <a href="https://cal.com/angelfernandezmotiv/1a1" target="_blank" rel="noopener">entrá acá</a>.</p></noscript>
-      <div class="cal-fallback" id="cal-fallback">No se pudo cargar el calendario. <a href="https://cal.com/angelfernandezmotiv/1a1" target="_blank" rel="noopener">Mirá los horarios acá</a> o <a data-link="whatsappDirecto" href="#">escribime por WhatsApp</a> y lo coordinamos.</div>
-    </div>
     <div class="cal-alt">
       <a class="btn btn-wsp" data-link="whatsappDirecto" href="#">Preferís WhatsApp — Escribime</a>
       <a class="btn btn-ghost" data-link="whatsapp" href="#">Sumarme a la comunidad gratis</a>
@@ -657,38 +647,7 @@ document.querySelectorAll("[data-link]").forEach(a => {
   selHora.addEventListener("change", actualizar);
   pintarHoras();
 })();
-
-/* ---- Calendario de Cal.com (agenda) ---- */
-(function () {
-  var fb = document.getElementById("cal-fallback");
-  function mostrarFallback() { if (fb) fb.style.display = "block"; }
-  try {
-    (function (C, A, L) {
-      var p = function (a, ar) { a.q.push(ar); };
-      var d = C.document;
-      C.Cal = C.Cal || function () {
-        var cal = C.Cal;
-        var ar = arguments;
-        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
-        if (ar[0] === L) {
-          var api = function () { p(api, arguments); };
-          var ns = ar[1];
-          api.q = api.q || [];
-          if (typeof ns === "string") { cal.ns[ns] = cal.ns[ns] || api; p(cal.ns[ns], ar); p(cal, ["initNamespace", ns]); } else p(cal, ar);
-          return;
-        }
-        p(cal, ar);
-      };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "charla", { origin: "https://cal.com" });
-    Cal.ns["charla"]("inline", { elementOrSelector: "#cal-inline", config: { layout: "month_view", theme: "dark" }, calLink: "angelfernandezmotiv/1a1" });
-    Cal.ns["charla"]("ui", { theme: "dark", layout: "month_view", hideEventTypeDetails: true, showTimezoneWhenEventDetailsHidden: true });
-    window.addEventListener("load", function () { setTimeout(function () {
-      var el = document.getElementById("cal-inline");
-      if (!el || !el.querySelector("iframe")) mostrarFallback();
-    }, 7000); });
-  } catch (e) { mostrarFallback(); }
-})();
 </script>
+
 </body>
 </html>
