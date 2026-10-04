@@ -229,6 +229,24 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--cielo);outline-offset
 .cal-fallback a{color:var(--cielo)}
 @media(max-width:660px){#cal-inline{min-height:580px}}
 
+/* ============ DESPLEGABLE DE HORARIOS ============ */
+.horas{margin-top:4px}
+.horas-cab{font-size:1.02rem;font-weight:700;color:#fff;margin-bottom:4px}
+.horas-sub{font-size:.9rem;color:var(--tinta-mute);margin-bottom:18px}
+.horas-rej{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:620px){.horas-rej{grid-template-columns:1fr 1fr}}
+.campo{display:flex;flex-direction:column;gap:7px}
+.campo label{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-mute)}
+.campo select{width:100%;-webkit-appearance:none;appearance:none;background:#0d2130 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%2356b8e8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center;background-size:11px;color:#fff;font:inherit;font-size:1rem;font-weight:600;padding:15px 44px 15px 16px;border:1px solid #2a5f7d;border-radius:12px;min-height:54px;cursor:pointer}
+.campo select:hover{border-color:var(--cielo)}
+.campo select:focus-visible{outline:3px solid var(--cielo);outline-offset:2px}
+.campo select:disabled{opacity:.55;cursor:not-allowed}
+.horas-cta{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.horas-aviso{font-size:.82rem;color:var(--tinta-mute);margin-top:12px}
+.horas-aviso b{color:var(--tinta-soft)}
+.horas-pill{display:inline-block;background:rgba(86,184,232,.12);border:1px solid #2a5f7d;color:var(--cielo);border-radius:999px;padding:6px 14px;font-size:.85rem;font-weight:700;margin-top:14px}
+@media(max-width:420px){.campo select{font-size:.95rem;padding:14px 40px 14px 14px}}
+
 /* ============ FOOTER ============ */
 footer.pie{background:#081620;border-top:1px solid var(--borde);padding:60px 0 92px;font-size:.9rem;color:var(--tinta-mute);position:relative;z-index:1}
 footer.pie .legal{max-width:760px;margin-bottom:24px}
@@ -448,6 +466,25 @@ footer.pie a{color:var(--tinta-soft)}
       <h2>Sesión 1A1 <span class="cielo">gratuita con Ángel Fernández</span></h2>
       <p>Elegí el día y la hora que te queden bien y reservá en el momento. Los horarios se muestran en la hora de tu país.</p>
     </div>
+    <div class="horas">
+      <h3 class="horas-cab">Elegí tu día y tu horario</h3>
+      <p class="horas-sub">Los horarios de la sesión 1A1 gratuita, en tu hora local. Reservás en dos pasos.</p>
+      <div class="horas-rej">
+        <div class="campo">
+          <label for="h-dia">Día</label>
+          <select id="h-dia" data-h-dia></select>
+        </div>
+        <div class="campo">
+          <label for="h-hora">Horario</label>
+          <select id="h-hora" data-h-hora></select>
+        </div>
+      </div>
+      <div class="horas-cta">
+        <a class="btn btn-primary" id="h-cta" href="https://cal.com/angelfernandezmotiv/1a1" target="_blank" rel="noopener">Reservar este horario</a>
+      </div>
+      <p class="horas-aviso" id="h-aviso">Elegí un día para ver los horarios disponibles.</p>
+    </div>
+
     <div class="cal-marco">
       <div id="cal-inline"></div>
       <noscript><p class="cal-nota">Para ver los horarios activá JavaScript, o <a href="https://cal.com/angelfernandezmotiv/1a1" target="_blank" rel="noopener">entrá acá</a>.</p></noscript>
@@ -504,6 +541,100 @@ document.querySelectorAll("[data-link]").forEach(a => {
   if (v === undefined) { console.warn("data-link sin CONFIG:", a.dataset.link); a.href = "#"; }
   else { a.href = v; }
 });
+
+/* ---- Desplegable de horarios (1A1) ---- */
+(function () {
+  var selDia = document.querySelector("[data-h-dia]");
+  var selHora = document.querySelector("[data-h-hora]");
+  var cta = document.getElementById("h-cta");
+  var aviso = document.getElementById("h-aviso");
+  if (!selDia || !selHora || !cta) return;
+
+  var BASE = "https://cal.com/angelfernandezmotiv/1a1";
+  var DUR = 40;                      // minutos de la sesión
+  var INICIO = 3 * 60;               // 03:00, hora de Argentina
+  var FIN = 17 * 60 + 40;            // 17:40
+  var DIAS = 21;                     // cuántos días se ofrecen
+  var TZ = "America/Argentina/Buenos_Aires";
+
+  var DIAS_SEM = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+  function ymd(d) {
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  // Convierte una hora de Argentina (HH:MM) a un Date real, para mostrarla en la zona del visitante
+  function fechaReal(y, m, d, hh, mm) {
+    var iso = y + "-" + String(m).padStart(2,"0") + "-" + String(d).padStart(2,"0") + "T" + String(hh).padStart(2,"0") + ":" + String(mm).padStart(2,"0") + ":00-03:00";
+    return new Date(iso);
+  }
+  function dosDig(n) { return String(n).padStart(2, "0"); }
+
+  // ---- Días ----
+  var hoy = new Date(); hoy.setHours(0,0,0,0);
+  var opciones = [];
+  for (var i = 0; i < DIAS; i++) {
+    var f = new Date(hoy); f.setDate(hoy.getDate() + i);
+    var txt = DIAS_SEM[f.getDay()] + " " + f.getDate() + " de " + MESES[f.getMonth()];
+    if (i === 0) txt = "Hoy · " + txt;
+    else if (i === 1) txt = "Mañana · " + txt;
+    opciones.push({ f: f, txt: txt });
+  }
+  selDia.innerHTML = "";
+  opciones.forEach(function (o, idx) {
+    var op = document.createElement("option");
+    op.value = ymd(o.f); op.textContent = o.txt;
+    if (idx === 0) op.selected = true;
+    selDia.appendChild(op);
+  });
+
+  // ---- Horarios del día elegido ----
+  function pintarHoras() {
+    var val = selDia.value.split("-");
+    var y = +val[0], m = +val[1], d = +val[2];
+    selHora.innerHTML = "";
+    var primera = null;
+    for (var min = INICIO; min <= FIN; min += DUR) {
+      var hh = Math.floor(min / 60), mm = min % 60;
+      var real = fechaReal(y, m, d, hh, mm);
+      if (real.getTime() < Date.now() + 30 * 60 * 1000) continue;   // descarta lo que ya pasó
+      var op = document.createElement("option");
+      op.value = dosDig(hh) + ":" + dosDig(mm);
+      op.textContent = real.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+      if (!primera) { primera = op; op.selected = true; }
+      selHora.appendChild(op);
+    }
+    if (!primera) {
+      selHora.disabled = true;
+      var v = document.createElement("option");
+      v.textContent = "No quedan horarios para ese día";
+      selHora.appendChild(v);
+      cta.setAttribute("aria-disabled", "true");
+      cta.style.pointerEvents = "none";
+      cta.style.opacity = ".5";
+      aviso.innerHTML = "Para ese día no quedan horarios. Probá con otro día o <b>escribime por WhatsApp</b> y lo coordinamos.";
+      return;
+    }
+    selHora.disabled = false;
+    cta.removeAttribute("aria-disabled");
+    cta.style.pointerEvents = "";
+    cta.style.opacity = "";
+    actualizar();
+  }
+
+  function actualizar() {
+    var sel = selHora.options[selHora.selectedIndex];
+    if (!sel || selHora.disabled) return;
+    cta.href = BASE + "?date=" + selDia.value;
+    var f = selDia.options[selDia.selectedIndex].textContent.replace(/^(Hoy|Mañana) · /, "");
+    aviso.innerHTML = "<b>" + f + " a las " + sel.textContent + "</b> · " + DUR +
+      " min. Te llevamos a Cal.com para confirmar y dejar tus datos.";
+  }
+
+  selDia.addEventListener("change", pintarHoras);
+  selHora.addEventListener("change", actualizar);
+  pintarHoras();
+})();
 
 /* ---- Calendario de Cal.com (agenda) ---- */
 (function () {
